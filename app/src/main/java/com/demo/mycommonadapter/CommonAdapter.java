@@ -47,5 +47,50 @@ public abstract class CommonAdapter<T> extends BaseAdapter{
         return viewHolder.getConvertView();
     }
 
+    public void add(T elem) {
+        mDatas.add(elem);
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<T> elem) {
+        mDatas.addAll(elem);
+        notifyDataSetChanged();
+    }
+
+    public void set(T oldElem, T newElem) {
+        set(mDatas.indexOf(oldElem), newElem);
+    }
+
+    public void set(int index, T elem) {
+        mDatas.set(index, elem);
+        notifyDataSetChanged();
+    }
+
+    public void remove(T elem) {
+        mDatas.remove(elem);
+        notifyDataSetChanged();
+    }
+
+    public void remove(int index) {
+        mDatas.remove(index);
+        notifyDataSetChanged();
+    }
+
+    public void replaceAll(List<T> elem) {
+        mDatas.clear();
+        mDatas.addAll(elem);
+        notifyDataSetChanged();
+    }
+
+    public boolean contains(T elem) {
+        return mDatas.contains(elem);
+    }
+
+    /** Clear data list */
+    public void clear() {
+        mDatas.clear();
+        notifyDataSetChanged();
+    }
+
     public abstract void convert(ViewHolder helper, T item);
 }
